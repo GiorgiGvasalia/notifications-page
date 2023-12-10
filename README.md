@@ -1,0 +1,1 @@
+this react.js project is a notifications page which displays notifications from different users, it works in real time and it's fully responsive, styled with css.
