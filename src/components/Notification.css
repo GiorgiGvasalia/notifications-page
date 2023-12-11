@@ -1,0 +1,22 @@
+.notification-container {
+  display: flex;
+  gap: 0.6rem;
+  border-radius: 8px;
+  background: #f7fafd;
+  padding: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.name-and-time {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.with-private-msg {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background: #f7fafd;
+  margin-bottom: 0.7rem;
+}
