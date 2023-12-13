@@ -1,0 +1,10 @@
+.mark-all-read {
+  color: #5E6778;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mark-all-read:hover {
+    color: #0A327B;
+}

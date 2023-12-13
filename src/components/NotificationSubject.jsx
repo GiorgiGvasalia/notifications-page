@@ -1,4 +1,4 @@
-import './NotificationSubject.css'
+import "./NotificationSubject.css";
 
 const NotificationSubject = ({
   notificationSubject,
@@ -8,9 +8,13 @@ const NotificationSubject = ({
   return (
     <>
       {subjectIsImage ? (
-        <img className="subject-img" src={`src/assets/images/${picture}`} alt="" />
+        <img
+          className="subject-img"
+          src={`src/assets/images/${picture}`}
+          alt=""
+        />
       ) : (
-        <label className='subject-text'>{notificationSubject}</label>
+        <label className="subject-text">{notificationSubject}</label>
       )}
     </>
   );

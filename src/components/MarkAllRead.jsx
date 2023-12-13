@@ -1,8 +1,10 @@
-const MarkAllRead = () => {
+import "./MarkAllRead.css";
+
+const MarkAllRead = ({ onAllReadClick }) => {
   return (
-    <div style={{ color: "#5E6778", fontSize: "13px", fontWeight: "500" }}>
+    <p onClick={onAllReadClick} className="mark-all-read">
       Mark All Read
-    </div>
+    </p>
   );
 };
 

@@ -1,13 +1,17 @@
 .private-msg-container {
- 
   border-radius: 5px;
-  border: 1px solid  #dde7ee;
-  background:  #fff;
-  width: 400px;
+  border: 1px solid #dde7ee;
+  background: #fff;
+  width: 420px;
   max-width: 100%;
-  margin-left: 20%;
   margin-bottom: 1rem;
   padding: 1rem;
+}
+
+.private-msg-container:hover {
+  border-radius: 5px;
+  border: 1px solid  #dde7ee;
+  background:  #e5effa;
 }
 
 .private-msg-container span {

@@ -1,19 +1,17 @@
-import NotificationsCount from "./NotificationsCount"
+import NotificationsCount from "./NotificationsCount";
 import MarkAllRead from "./MarkAllRead";
-import './NotificationHeader.css'
+import "./NotificationHeader.css";
 
-
-const NotificationHeader = () => {
+const NotificationHeader = ({ notificationCount, onAllReadClick }) => {
   return (
     <div className="header">
-    <div className="header-title-and-count">
+      <div className="header-title-and-count">
         <label>Notifications</label>
-        <NotificationsCount notificationCount="10" />
-
+        <NotificationsCount notificationCount={notificationCount} />
+      </div>
+      <MarkAllRead onAllReadClick={onAllReadClick} />
     </div>
-        <MarkAllRead />
-    </div>
-  )
-}
+  );
+};
 
-export default NotificationHeader
+export default NotificationHeader;

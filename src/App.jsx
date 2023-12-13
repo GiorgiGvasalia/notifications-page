@@ -1,69 +1,104 @@
 import "./App.css";
 import NotificationHeader from "./components/NotificationHeader";
 import Notification from "./components/Notification";
-
-const notificationsData = [
-  {
-    id: 212,
-    avatar: "avatar-mark-webber.webp",
-    userName: "Mark Webber",
-    interactionWay: "reacted to your recent post",
-    notificationSubject: "My first tournament today",
-    time: "now"
-  },
-  {
-    id: 221,
-    avatar: "avatar-angela-gray.webp",
-    userName: "Angela Gray",
-    interactionWay: "followed you",
-    time: "5m ago"
-  },
-  {
-    id: 122,
-    avatar: "avatar-jacob-thompson.webp",
-    userName: "Jacob Thompson",
-    interactionWay: "has joined your group",
-    notificationSubject: "Chess club",
-    time: "2 days ago"
-  },
-  {
-    id: 222,
-    avatar: "avatar-rizky-hasanuddin.webp",
-    userName: "Rizky Hasanuddin",
-    interactionWay: "sent you private message",
-    privateMsg:
-      "Hello, thanks for setting up the Chess Club. I’ve been a member for a few weeks now and I’m already having lots of fun and improving my game.",
-    time: "1 week ago",
-    hasPrivateMsg: true
-  },
-  {
-    id: 767,
-    avatar: "avatar-kimberly-smith.webp",
-    userName: 'Kimberly Smith',
-    interactionWay: "commented on your picture",
-    subjectIsImage: true,
-    picture: 'image-chess.webp',
-    time: "10 days ago",
-  }
-];
+import { useState, useEffect } from "react";
+import InteractingWay from "./components/InteractingWay";
+import NotifTime from "./components/NotifTime";
+import NotificationSubject from "./components/NotificationSubject";
+import UserName from "./components/UserName";
+import UserAvatar from "./components/UserAvatar";
+import NotificationInfo from "./components/NotificationInfo";
+import UnreadIcon from "./components/UnreadIcon";
+import PrivateMessage from "./components/PrivateMessage";
 
 function App() {
+  const [notifications, setNotifications] = useState([
+    {
+      id: 212,
+      avatar: "avatar-mark-webber.webp",
+      userName: "Mark Webber",
+      interactionWay: "reacted to your recent post",
+      notificationSubject: "My first tournament today",
+      time: "now",
+    },
+  ]);
+
+
+  // MARK SINGLE NOTIFICATION READ
+
+  const handleReadNotification = (notifiId) => {
+    setNotifications((prevNotifications) => {
+      const notificationIndex = prevNotifications.findIndex(
+        (notification) => notification.id === notifiId
+      );
+
+      const updatedNotifications = [...prevNotifications];
+      updatedNotifications[notificationIndex] = {
+        ...updatedNotifications[notificationIndex],
+        read: true,
+      };
+      return updatedNotifications;
+    });
+  };
+
+  // NOTIFICATIONS COUNT
+  const unreadNotificationsLength = notifications.filter(
+    (notification) => !notification.read
+  ).length;
+
+
+  // MARK ALL READ
+
+  const handleMarkAllRead = () => {
+    setNotifications((prevNotifications) => {
+      return prevNotifications.map((notification) => ({
+        ...notification,
+        read: true
+      }))
+    })
+
+  }
+
+//GETTING NOTIFICATIONS 
+
+  const getNotifications = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/notifications");
+      const notificationData = await response.json();
+      setNotifications(notificationData);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
+
+  useEffect(() => {
+    getNotifications();
+  }, []);
+
   return (
     <div className="notifications-page">
-      <NotificationHeader />
-      {notificationsData.map((notifData) => (
+      <NotificationHeader notificationCount={unreadNotificationsLength} onAllReadClick={handleMarkAllRead}/>
+      {notifications.map((notifData) => (
         <Notification
-          key={notifData.id}
-          avatar={notifData.avatar}
-          userName={notifData.userName}
-          interactingWay={notifData.interactionWay}
-          notificationSubject={notifData.notificationSubject}
-          time={notifData.time}
-          subjectIsImage={notifData.subjectIsImage}
-          picture={notifData.picture}
+          isRead={notifData.read}
           privateMsg={notifData.privateMsg}
-          hasprivateMsg={notifData.hasPrivateMsg}
-        />
+          key={notifData.id}
+          onNotificationClick={() => handleReadNotification(notifData.id)}
+        >
+          <NotificationInfo>
+            <UserAvatar avatar={notifData.avatar} />
+            <div className="name-and-time">
+              <UserName userName={notifData.userName} />
+              <NotifTime time={notifData.time} />
+            </div>
+            <InteractingWay interactingWay={notifData.interactionWay} />
+            <NotificationSubject
+              notificationSubject={notifData.notificationSubject}
+            />
+            {!notifData.read && <UnreadIcon />}
+          </NotificationInfo>
+          <PrivateMessage privateMsg={notifData.privateMsg} />
+        </Notification>
       ))}
     </div>
   );
