@@ -4,66 +4,66 @@
             "id": 212,
             "avatar": "avatar-mark-webber.webp",
             "userName": "Mark Webber",
-            "interactionWay": "reacted to your recent post",
+            "interactingWay": "reacted to your recent post",
             "notificationSubject": "My first tournament today",
             "time": "2023-12-13T19:00:00Z",
-            "read": false
+            "isRead": false
         },
         {
             "id": 221,
             "avatar": "avatar-angela-gray.webp",
             "userName": "Angela Gray",
-            "interactionWay": "followed you",
+            "interactingWay": "followed you",
             "time": "2023-12-13T19:00:00Z",
-            "read": false
+            "isRead": false
         },
         {
             "id": 122,
             "avatar": "avatar-jacob-thompson.webp",
             "userName": "Jacob Thompson",
-            "interactionWay": "has joined your group",
+            "interactingWay": "has joined your group",
             "notificationSubject": "Chess club",
             "time": "2023-12-13T19:00:00Z",
-            "read": false
+            "isRead": false
         },
         {
             "id": 222,
             "avatar": "avatar-rizky-hasanuddin.webp",
             "userName": "Rizky Hasanuddin",
-            "interactionWay": "sent you private message",
+            "interactingWay": "sent you private message",
             "privateMsg": "Hello, thanks for setting up the Chess Club. I’ve been a member for a few weeks now and I’m already having lots of fun and improving my game.",
             "time": "2023-12-13T19:00:00Z",
             "hasPrivateMsg": true,
-            "read": true
+            "isRead": true
 
         },
         {
             "id": 767,
             "avatar": "avatar-kimberly-smith.webp",
             "userName": "Kimberly Smith",
-            "interactionWay": "commented on your picture",
+            "interactingWay": "commented on your picture",
             "subjectIsImage": true,
             "picture": "image-chess.webp",
             "time": "2023-12-13T19:00:00Z",
-            "read": true
+            "isRead": true
         },
         {
             "id": 178,
             "avatar": "avatar-nathan-peterson.webp",
             "userName": "Nathan Peterson",
-            "interactionWay": "reacted to your recent post",
+            "interactingWay": "reacted to your recent post",
             "notificationSubject": "5 end game strategies to increase your win rate",
             "time": "2023-12-13T19:00:00Z",
-            "read": true
+            "isRead": true
         },
         {
             "id": 255,
             "avatar": "avatar-anna-kim.webp",
             "userName": "Anna Kim",
-            "interactionWay": "left the group",
+            "interactingWay": "left the group",
             "notificationSubject": "Chess club",
             "time": "2023-12-13T19:00:00Z",
-            "read": true
+            "isRead": true
         }
     ]
 }

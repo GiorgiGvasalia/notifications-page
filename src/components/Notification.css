@@ -5,7 +5,7 @@
   background: #f7fafd;
   padding: 0.7rem;
   margin-bottom: 0.7rem;
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 .read-notification {
@@ -18,11 +18,14 @@
 
 .with-private-msg {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  background: black;
   border-radius: 8px;
   background: #f7fafd;
   padding: 0.7rem;
   margin-bottom: 0.7rem;
-  cursor: pointer !important;
+  cursor: pointer;
+}
+
+.notification-container .avatar {
+  align-self: flex-start;
 }
